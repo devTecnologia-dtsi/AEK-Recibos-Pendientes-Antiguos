@@ -60,9 +60,9 @@ export default Screen = () => {
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Descargar
                     </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    {/* <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Pago PSE
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -109,22 +109,60 @@ export default Screen = () => {
                           <td>
                             {recibo.MATERIALES.map(materialObj => materialObj.MATERIAL).join(', ')}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          {/* <td className="px-6 py-4 whitespace-nowrap">
                             <a href={recibo.RUTA} onMouseEnter={() => setIsHovered(true)}
                               onMouseLeave={() => setIsHovered(false)} style={isHovered ? estiloHover : estiloBase}
                               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" download={recibo.NOMBREPDF}>
                               Descargar
                             </a>
-                          </td>
+                          </td> */}
                           <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="flex items-center space-x-4">
+
+                              {/* Botón de descarga */}
+                              <a href={recibo.RUTA} onMouseEnter={() => setIsHovered(true)}
+                              onMouseLeave={() => setIsHovered(false)} style={isHovered ? estiloHover : estiloBase}
+                              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" download={recibo.NOMBREPDF}>
+                              Descargar
+                            </a>
+
+                              {/* Ícono PSE sin recuadro */}
+                              {recibo.IDPSE && recibo.IDPSE.trim() !== "" ? (
+                                <a href={`${urlPagoPSE}${recibo.IDPSE}`}>
+                                  <img
+                                    style={{ width: "40px", cursor: "pointer", display: "inline-block" }}
+                                    src="https://storage-masivdrive.masivapp.com/1703/98f65ca6-11a6-4aee-9260-9ade652ca57f/4794c789-5271-4343-89bd-01db134eed4b/eb9bcb10-b9d3-4c27-897c-05113a4a35b0/f5ae2a2c-4241-4220-a112-3e348bccc988.png"
+                                    alt="PSE"
+                                  />
+                                </a>
+                              ) : (
+                                <a
+                                  onClick={() =>
+                                    mostrarAlertaError(
+                                      "Este recibo no se puede pagar por PSE. Comuníquese con el área de matrículas."
+                                    )
+                                  }
+                                >
+                                  <img
+                                    style={{ width: "40px", cursor: "pointer", opacity: 0.5, display: "inline-block" }}
+                                    src="https://storage-masivdrive.masivapp.com/1703/98f65ca6-11a6-4aee-9260-9ade652ca57f/4794c789-5271-4343-89bd-01db134eed4b/eb9bcb10-b9d3-4c27-897c-05113a4a35b0/f5ae2a2c-4241-4220-a112-3e348bccc988.png"
+                                    alt="PSE No disponible"
+                                  />
+                                </a>
+                              )}
+                            </div>
+                          </td>
+
+
+                          {/* <td className="px-6 py-4 whitespace-nowrap"> */}
                             {/* Si no viene un idPSE al darle click al boton de pse muestra alerta con mensaje de error */}
-                            {recibo.IDPSE && recibo.IDPSE.trim() !== "" ?
+                            {/* {recibo.IDPSE && recibo.IDPSE.trim() !== "" ?
                               (
                                 <a href={`${urlPagoPSE}${recibo.IDPSE}`} onMouseEnter={() => setIsHoveredPse(true)}
                                   onMouseLeave={() => setIsHoveredPse(false)} style={isHoveredPse ? estiloHover : estiloBase}
-                                >
+                                > */}
                                   {/* <img style={{ maxWidth: "10%", cursor: "pointer" }} src="https://storage-masivdrive.masivapp.com/1703/98f65ca6-11a6-4aee-9260-9ade652ca57f/4794c789-5271-4343-89bd-01db134eed4b/eb9bcb10-b9d3-4c27-897c-05113a4a35b0/f5ae2a2c-4241-4220-a112-3e348bccc988.png" /> */}
-                                  <img style={{ width: "40px", cursor: "pointer" }} src="https://storage-masivdrive.masivapp.com/1703/98f65ca6-11a6-4aee-9260-9ade652ca57f/4794c789-5271-4343-89bd-01db134eed4b/eb9bcb10-b9d3-4c27-897c-05113a4a35b0/f5ae2a2c-4241-4220-a112-3e348bccc988.png" />
+                                  {/* <img style={{ width: "40px", cursor: "pointer" }} src="https://storage-masivdrive.masivapp.com/1703/98f65ca6-11a6-4aee-9260-9ade652ca57f/4794c789-5271-4343-89bd-01db134eed4b/eb9bcb10-b9d3-4c27-897c-05113a4a35b0/f5ae2a2c-4241-4220-a112-3e348bccc988.png" />
                                 </a>
                               ) :
                               (
@@ -135,7 +173,7 @@ export default Screen = () => {
                                 </a>
                               )
                             }
-                          </td>
+                          </td> */}
                         </tr>
                       ))
                   }
