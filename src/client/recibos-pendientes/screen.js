@@ -48,6 +48,7 @@ export default Screen = () => {
         recibos.length > 0 ? (
           <div className="container mx-auto px-4 py-5 bg-gray p-2" style={estiloFuentes}>
             <div className="flex flex-col space-y-4 bg-white rounded-md shadow-md p-4">
+              <h2 className="text-center" style={estiloBadges}>Estimado estudiante Si no visualiza el recibo, genere uno nuevo. O contacte al área de Matrículas de su sede UNIMINUTO.</h2>
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
@@ -128,7 +129,7 @@ export default Screen = () => {
                                 </a>
                               ) :
                               (
-                                <a onClick={() => mostrarAlertaError("Este recibo de matrícula no se puede pagar por PSE debido a que no se encontró un valor de matrícula para la fecha 1. Por favor, comuníquese con el área de Matriculas de su sede.")}
+                                <a onClick={() => mostrarAlertaError("Este recibo de matrícula no se puede pagar por PSE ya que no cuenta con una fecha vigente. Por favor, genere un recibo nuevo o comuníquese con el área de Matriculas de su sede UNIMINUTO.")}
                                   onMouseLeave={() => setIsHoveredPse(false)} style={isHoveredPse ? estiloHover : estiloBase}
                                 >
                                   <img style={{ width: "40px", cursor: "pointer" }} src="https://storage-masivdrive.masivapp.com/1703/98f65ca6-11a6-4aee-9260-9ade652ca57f/4794c789-5271-4343-89bd-01db134eed4b/eb9bcb10-b9d3-4c27-897c-05113a4a35b0/f5ae2a2c-4241-4220-a112-3e348bccc988.png" />
